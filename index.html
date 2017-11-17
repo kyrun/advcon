@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Adventurer Advisory</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>  
-    <script src="Build/UnityLoader.js"></script>
-    <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Web.json", {onProgress: UnityProgress});
-    </script>
-  </head>
-  <body>
-    <div class="webgl-content">
-      <div id="gameContainer" style="width: 1366px; height: 768px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">Please fill in the <a href='https://docs.google.com/forms/d/e/1FAIpQLSc36YFmIn-bC0uFIecpV7M-Hbmv0juG7REuh7zDa5mRRnuvNA/viewform'>survey</a>        after you have played the game!</div>
-      </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Adventurer Advisory</title>
+  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <link rel="stylesheet" href="TemplateData/style.css">
+  <script>
+    window.onbeforeunload = function (e)
+    {
+      var message = "Your confirmation message goes here.",
+        e = e || window.event;
+      // For IE and Firefox
+      if (e)
+      {
+        e.returnValue = message;
+      }
+
+      // For Safari
+      return message;
+    };
+    // window.addEventListener("beforeunload", function (e)
+    //   {
+    //     var confirmationMessage = "\o/";
+
+    //     e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+    //     return confirmationMessage;              // Gecko, WebKit, Chrome <34
+    //   });
+  </script>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+  <script>
+    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Web.json", { onProgress: UnityProgress });
+  </script>
+</head>
+
+<body>
+  <div class="webgl-content">
+    <div id="gameContainer" style="width: 1366px; height: 768px"></div>
+    <div class="footer">
+      <div class="webgl-logo"></div>
+      <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+      <div class="title">Please fill in the <a href='https://docs.google.com/forms/d/e/1FAIpQLSc36YFmIn-bC0uFIecpV7M-Hbmv0juG7REuh7zDa5mRRnuvNA/viewform'>survey</a>        after you have played the game!</div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
